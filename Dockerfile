@@ -6,10 +6,9 @@ WORKDIR /app
 COPY gradlew .
 COPY gradle gradle
 
-RUN chmod +x ./gradlew
-
 COPY . .
-RUN ./gradlew clean bootJar --no-daemon
+RUN chmod +x ./gradlew && ./gradlew clean bootJar --no-daemon
+
 
 # ---- STAGE 2: runtime ----
 FROM openjdk:24-jdk-slim-bullseye
